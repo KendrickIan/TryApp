@@ -43,7 +43,7 @@ const UpdateSkill = (props) => {
             </marquee> */}
             <form>
                 <div>
-                    <h4>Add a new skill to the list</h4>
+                    <h4>Edit details of the skill {props.skillName}</h4>
                     <label htmlFor="name-edit-input">Enter Skill Name:</label>
                     <input type="text" placeholder={props.skillName} id="name-edit-input" onChange={HandleEditNameChange} />
                 </div>
