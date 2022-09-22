@@ -53,9 +53,7 @@ const updateSkill = async (skillId, skillDetails) => {
         let skillName = skillDetails.skillName;
         let maxSkillLevel = skillDetails.maxSkillLevel;
         let checkIfExistingById = await pool.query('SELECT COUNT(*) FROM public.skills WHERE id = $1;', [skillId]);
-        console.log(typeof checkIfExistingById.rows[0].count, "checkIfExistingById");
         if (checkIfExistingById.rows[0].count != 0) {
-            // console.log(`skill ID: ${skillId}, skillName: ${skillName}, max skill lvl: ${maxSkillLevel}`);
             await pool.query('UPDATE public.skills SET max_skill_level = $3, skill_name = $2 WHERE id = $1;', [skillId, skillName, maxSkillLevel]);
             return {
                 status: 204,
@@ -77,7 +75,6 @@ const updateSkill = async (skillId, skillDetails) => {
 
 const deleteSkill = async (skillId) => {
     try {
-        // console.log(`skill ID: ${skillId}`);
         await pool.query('DELETE FROM public.skills WHERE id = $1;', [skillId]);
         return {
             status: 200,
